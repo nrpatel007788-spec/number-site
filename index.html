@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Display</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 120px;
+      font-family: Arial;
+      background: black;
+      color: lime;
+    }
+  </style>
+</head>
+<body>
+
+<div id="number">0</div>
+
+<script>
+  function showNumber() {
+    const fixedNumber = 4; // 👈 yahan 0–9 me se number badlo
+    document.getElementById("number").innerText = fixedNumber;
+  }
+
+  showNumber();
+  setInterval(showNumber, 3600000); // 1 hour
+</script>
+
+</body>
+</html>
