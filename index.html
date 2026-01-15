@@ -1,33 +1,72 @@
-<script>
-  let lastUpdatedHour = -1;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Display</title>
 
-  // 👇 YAHAN AAP APNE NUMBER SET KARO
-  const hourNumbers = {
-    13: 4, // 1 PM
-    14: 7, // 2 PM
-    15: 1, // 3 PM
-    16: 9  // 4 PM
-  };
-
-  function checkExactTime() {
-    const now = new Date();
-    const hour = now.getHours();
-    const min = now.getMinutes();
-    const sec = now.getSeconds();
-
-    if (min === 0 && sec === 0 && hour !== lastUpdatedHour) {
-
-      if (hourNumbers.hasOwnProperty(hour)) {
-        document.getElementById("number").innerText =
-          hourNumbers[hour];
-
-        document.getElementById("time").innerText =
-          "Updated at: " + now.toLocaleString();
-      }
-
-      lastUpdatedHour = hour;
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: black;
+      color: lime;
+      font-family: Arial, sans-serif;
     }
-  }
 
-  setInterval(checkExactTime, 1000);
-</script>
+    #number {
+      font-size: 40vw;   /* 🔥 full screen size */
+      line-height: 1;
+    }
+
+    #time {
+      margin-top: 20px;
+      font-size: 22px;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="number">0</div>
+  <div id="time">Waiting for update...</div>
+
+  <script>
+    let lastUpdatedHour = -1;
+
+    // 👇 APNE HISAB SE NUMBER SET KARO
+    const hourNumbers = {
+      13: 4, // 1 PM
+      14: 7, // 2 PM
+      15: 1, // 3 PM
+      16: 9  // 4 PM
+    };
+
+    function checkExactTime() {
+      const now = new Date();
+      const hour = now.getHours();
+      const min = now.getMinutes();
+      const sec = now.getSeconds();
+
+      if (min === 0 && sec === 0 && hour !== lastUpdatedHour) {
+
+        if (hourNumbers.hasOwnProperty(hour)) {
+          document.getElementById("number").innerText =
+            hourNumbers[hour];
+
+          document.getElementById("time").innerText =
+            "Updated at: " + now.toLocaleString();
+        }
+
+        lastUpdatedHour = hour;
+      }
+    }
+
+    setInterval(checkExactTime, 1000);
+  </script>
+
+</body>
+</html>
